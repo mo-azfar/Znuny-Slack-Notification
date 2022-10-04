@@ -8,9 +8,9 @@
 
 1. Create New Slack App. Reference: https://api.slack.com/apps
 
-a) Create an App > From scractch
-   - App Name: Anything
-   - Workspace: Anything 
+	a) Create an App > From scractch
+	- App Name: Anything
+	- Workspace: Anything 
 
 
 2. Create incoming webhooks via Your App Name > Add features and functionality > Create Incoming Webhook > Activate Incoming Webhooks
@@ -18,23 +18,24 @@ a) Create an App > From scractch
 
 3. Create Bots via Your App Name > Add features and functionality > Bots > Review Scopes to Add
 
-a) Bot Token Scopes > Add an OAuth Scope
+	a) Bot Token Scopes > Add an OAuth Scope
 
 		chat:write
 		chat:write.customize
 		chat:write.public
 		im:write
 
-b) OAuth Tokens for Your Workspace > Install to Workspace > Allow
+	b) OAuth Tokens for Your Workspace > Install to Workspace > Allow
 
-c) **OAuth Tokens for Your Workspace > Bot User OAuth Token
+	c) **OAuth Tokens for Your Workspace > Bot User OAuth Token
 
-E.g: xoxb-234234234-234234234324-hffghsgfhdfhdgfh
+	E.g: xoxb-234234234-234234234324-hffghsgfhdfhdgfh
 
-**Copy and save it somewhere first.
+	**Copy and save it somewhere first.
 
 
 4. Import the 'Slack Notification.yml' via Admin > Web Services.
+
 
 5. Update the Slack Bot User OAuth Access Token (3c) at the created webservice.
 
@@ -49,15 +50,16 @@ E.g: xoxb-234234234-234234234324-hffghsgfhdfhdgfh
 
 6. Import and deploy ZZZAgentSlack.xml at /opt/otrs/Kernel/Config/Files/XML/
 
+
 7. Obtain the Slack Member ID for the users, and update it into Agent Preferences > Miscellaneous > 'Slack Member ID'. 	
 
-- Click on a user name within Slack.  
-- Click on "View profile" in the menu that appears.  
-- Click the more icon "..."  
-- Click on "Copy Member ID."  
+		- Click on a user name within Slack.  
+		- Click on "View profile" in the menu that appears.  
+		- Click the more icon "..."  
+		- Click on "Copy Member ID."  
 
 
-7. Create a new Ticket Notification  
+8. Create a new Ticket Notification  
 
 		- Event: NotificationOwnerUpdate
 		- Select Recipients: (Should be owners)
