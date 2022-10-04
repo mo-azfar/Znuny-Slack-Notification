@@ -1,0 +1,64 @@
+---
+Debugger:
+  DebugThreshold: debug
+  TestMode: '0'
+Description: ''
+FrameworkVersion: 6.4.3
+Provider:
+  Transport:
+    Type: ''
+RemoteSystem: ''
+Requester:
+  Invoker:
+    OwnerUpdate:
+      Description: ''
+      Events: []
+      GetAllArticleAttachments: '0'
+      MappingOutbound:
+        Config:
+          DataInclude: []
+          ForceArray: blocks fields
+          KeepAttributes: ''
+          PostRegExFilter: ~
+          PostRegExValueCounter: ~
+          PreRegExFilter: ~
+          PreRegExValueCounter: ~
+          Template: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<xsl:transform
+            version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:date=\"http://exslt.org/dates-and-times\"
+            extension-element-prefixes=\"date\">\r\n    <xsl:output method=\"xml\"
+            encoding=\"utf-8\" indent=\"yes\"/>\r\n    <xsl:template match=\"RootElement\">\r\n
+            \       <xsl:copy>\r\n          <channel><xsl:value-of select=\"//Recipient/UserSlackMemberID\"
+            /></channel>\r\n          <text></text>\r\n          <blocks>\r\n          \t<type>section</type>\r\n
+            \           <text>\r\n            \t<type>mrkdwn</type>\r\n\t\t        <text>*&lt;&lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=<xsl:value-of
+            select=\"//Ticket/TicketID\"/>|&lt;OTRS_CONFIG_Ticket::Hook&gt;<xsl:value-of
+            select=\"//Ticket/TicketNumber\" />&#x20;-&#x20;<xsl:value-of select=\"//Ticket/Title\"
+            />&gt;*\r\n              \r\nOwner Update to&#x20;<xsl:value-of select=\"//Ticket/OwnerData/UserFullname\"
+            />\r\n            </text>\r\n          </text>\r\n          </blocks>\r\n
+            \          <blocks>\r\n            <type>section</type>\r\n            <fields>\r\n
+            \           \t<type>mrkdwn</type>\r\n                <text>*Type*\r\n
+            \                 <xsl:value-of select=\"//Ticket/Type\" />\r\n                </text>\r\n
+            \           </fields>\r\n            <fields>\r\n            \t<type>mrkdwn</type>\r\n
+            \               <text>*Created*\r\n                  <xsl:value-of select=\"//Ticket/Created\"
+            />\r\n                </text>\r\n            </fields>\r\n            <fields>\r\n
+            \           \t<type>mrkdwn</type>\r\n                <text>*Queue*\r\n
+            \                 <xsl:value-of select=\"//Ticket/Queue\" />\r\n                </text>\r\n
+            \           </fields>\r\n             <fields>\r\n            \t<type>mrkdwn</type>\r\n
+            \               <text>*Priority*\r\n                  <xsl:value-of select=\"//Ticket/Priority\"
+            />\r\n                </text>\r\n            </fields>\r\n            </blocks>\r\n
+            \       </xsl:copy>\r\n    </xsl:template>\r\n</xsl:transform>"
+        Type: XSLT
+      Type: Ticket::Generic
+  Transport:
+    Config:
+      AdditionalHeaders:
+        Authorization: Bearer SLACK_BOT_OAUTH_TOKEN
+      ContentType: JSON
+      DefaultCommand: POST
+      Host: https://slack.com/api
+      InvokerControllerMapping:
+        OwnerUpdate:
+          Command: POST
+          Controller: /chat.postMessage
+      SSLNoHostnameVerification: '0'
+      Timeout: '30'
+    Type: HTTP::REST
