@@ -68,3 +68,4 @@ E.g: xoxb-234234234-234234234324-hffghsgfhdfhdgfh
 		- Notification Body and Text
 			-- Anything as the actual value is set from XSLT itself.
 		
+![Screenshot](AgentSlack.png)
