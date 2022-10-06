@@ -13,10 +13,7 @@
 	- Workspace: Anything 
 
 
-2. Create incoming webhooks via Your App Name > Add features and functionality > Create Incoming Webhook > Activate Incoming Webhooks
-
-
-3. Create Bots via Your App Name > Add features and functionality > Bots > Review Scopes to Add
+2. Create Bots via Your App Name > Add features and functionality > Bots > Review Scopes to Add
 
 	a) Bot Token Scopes > Add an OAuth Scope
 
@@ -34,10 +31,10 @@
 	**Copy and save it somewhere first.
 
 
-4. Import the 'Slack Notification.yml' via Admin > Web Services.
+3. Import the 'Slack Notification.yml' via Admin > Web Services.
 
 
-5. Update the Slack Bot User OAuth Access Token (3c) at the created webservice.
+4. Update the Slack Bot User OAuth Access Token (2c) at the created webservice.
 
 	a) OTRS as requester > Network transport (HTTP::REST) > Configure
 	
@@ -48,10 +45,10 @@
 	c) Save and finish
 	
 
-6. Import and deploy ZZZAgentSlack.xml at /opt/otrs/Kernel/Config/Files/XML/
+5. Import and deploy ZZZAgentSlack.xml at /opt/otrs/Kernel/Config/Files/XML/
 
 
-7. Obtain the Slack Member ID for the users, and update it into Agent Preferences > Miscellaneous > 'Slack Member ID'. 	
+6. Obtain the Slack Member ID for the users, and update it into Agent Preferences > Miscellaneous > 'Slack Member ID'. 	
 
 		- Click on a user name within Slack.  
 		- Click on "View profile" in the menu that appears.  
@@ -59,7 +56,7 @@
 		- Click on "Copy Member ID."  
 
 
-8. Create a new Ticket Notification  
+7. Create a new Ticket Notification  
 
 		- Event: NotificationOwnerUpdate
 		- Select Recipients: (Should be owners)
